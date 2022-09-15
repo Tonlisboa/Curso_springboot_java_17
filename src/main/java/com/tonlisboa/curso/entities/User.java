@@ -1,10 +1,11 @@
 package com.tonlisboa.curso.entities;
 
 import java.io.Serializable;
+
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class User implements Serializable {
@@ -18,6 +19,10 @@ public class User implements Serializable {
 	private String phone;
 	private String password;
 	
+	public User(){
+		
+	}
+
 	public User(Long id, String name, String email, String phone, String password) {
 		super();
 		this.id = id;
@@ -26,6 +31,7 @@ public class User implements Serializable {
 		this.phone = phone;
 		this.password = password;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -79,9 +85,7 @@ public class User implements Serializable {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
+		if ((obj == null) || (getClass() != obj.getClass()))
 			return false;
 		User other = (User) obj;
 		if (id == null) {

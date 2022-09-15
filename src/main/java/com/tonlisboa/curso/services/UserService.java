@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.tonlisboa.curso.entities.User;
 import com.tonlisboa.curso.repositories.UserRepository;
+import com.tonlisboa.curso.services.exceptions.ResourceNotFoundException;
 
 
 
@@ -21,7 +22,7 @@ public class UserService {
 	}
 	public User finbById(Long id) {
 		Optional<User> obj =repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(()-> new ResourceNotFoundException(id));
 	}
 	
 	public User insert(User Obj) {
